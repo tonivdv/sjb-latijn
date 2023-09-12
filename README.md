@@ -2,7 +2,7 @@
 
 Kleine projectje die de kinderen de mogelijkheid geeft om hun latijns woordjes te oefenen.
 
-[play here](sjb-latijn.vercel.app)
+[play here](https://sjb-latijn.vercel.app)
 
 ## Getting Started
 
