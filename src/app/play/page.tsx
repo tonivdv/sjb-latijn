@@ -100,8 +100,8 @@ export default function Home() {
                   </div>
                 )}
                 <div className="grid grid-cols-2 gap-1 mb-4">
-                  <div className="flex items-center justify-left">
-                    <label className="block text-sm font-medium leading-6 text-white-900">
+                  <div className="flex items-center justify-end">
+                    <label className="block text-sm font-medium leading-6 text-white-900 pr-1">
                       {word.latin}
                     </label>
                   </div>
