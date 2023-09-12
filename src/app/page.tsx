@@ -9,8 +9,8 @@ export default function Home() {
             <Image className="h-12 w-12" src="/latin.svg" alt="ChitChat Logo" width="12" height="12" />
           </div>
           <div>
-            <div className="text-xl font-medium text-black">
-              Test je woordjes
+            <div className="text-xs font-medium text-black">
+              ik oefen
             </div>
           </div>
         </div>

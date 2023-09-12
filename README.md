@@ -1,15 +1,20 @@
-# SJB Latijns woorden oefenen
+# SJB Latijnse Woorden Oefenen
 
-Kleine projectje die de kinderen de mogelijkheid geeft om hun latijns woordjes te oefenen.
+Little project so that the kids from Sint-Jan Berchmans College Latin1 can practice their Latin words.
 
-[play here](https://sjb-latijn.vercel.app)
+[Play Here](https://sjb-latijn.vercel.app)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+clone git@github.com:tonivdv/sjb-latijn.git
+cd sjb-latij
+npm ci
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## License
+
+[MIT](LICENSE)

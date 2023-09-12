@@ -1,0 +1,20 @@
+[
+  { "latin": "pater", "dutch": ["de vader"] },
+  { "latin": "canis", "dutch": ["de hond"] },
+  { "latin": "amicus", "dutch": ["de vriend"] },
+  { "latin": "dominus", "dutch": ["de meester"] },
+  { "latin": "equus", "dutch": ["het paard"] },
+  { "latin": "filius", "dutch": ["de zoon"] },
+  { "latin": "servus", "dutch": ["de slaaf"] },
+  { "latin": "aqua", "dutch": ["het water"] },
+  { "latin": "familie", "dutch": ["het gezin","de familie"] },
+  { "latin": "via", "dutch": ["de weg"] },
+  { "latin": "monumentum", "dutch": ["het monument"] },
+  { "latin": "templum", "dutch": ["de tempel"] },
+  { "latin": "vinum", "dutch": ["de wijn"] },
+  { "latin": "senex", "dutch": ["de oude man"] },
+  { "latin": "vingo", "dutch": ["de maagd"] },
+  { "latin": "vox", "dutch": ["de stem"] },
+  { "latin": "flumen", "dutch": ["de rivier"] },
+  { "latin": "sidus", "dutch": ["de ster","het sterrenbeeld"] }
+]
