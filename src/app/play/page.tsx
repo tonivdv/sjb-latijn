@@ -72,7 +72,13 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-6 text-xs">
       {loading ? (
         <div className="text-center">
-          <Image className="h-50 w-50" src="/spinner.svg" alt="Loading" width="50" height="50" />
+          <Image
+            className="h-50 w-50"
+            src="/spinner.svg"
+            alt="Loading"
+            width="50"
+            height="50"
+          />
         </div>
       ) : (
         <div>
@@ -85,9 +91,9 @@ export default function Home() {
             {words.map((word, index) => (
               <div key={index} className="">
                 {gameOver && !isAllCorrect(index, word) && (
-                  <div className="grid grid-cols-2 gap-4 text-red-500">
+                  <div className="grid grid-cols-3 gap-4 text-red-500">
                     <div></div>
-                    <div>
+                    <div className="col-start-2 col-span-2">
                       {word.dutch.map((dutchWord, dutchIndex) => (
                         <div
                           key={dutchIndex}
@@ -99,25 +105,27 @@ export default function Home() {
                     </div>
                   </div>
                 )}
-                <div className="grid grid-cols-2 gap-1 mb-4">
-                  <div className="flex items-center justify-end">
+                <div className="grid grid-cols-3 gap-1 mb-4">
+                  <div className="flex items-center justify-end col-span-1">
                     <label className="block text-sm font-medium leading-6 text-white-900 pr-1">
                       {word.latin}
                     </label>
                   </div>
-                  <textarea
-                    value={userAnswers[index] || ""}
-                    rows={2}
-                    onChange={(e) => {
-                      const newAnswers = [...userAnswers];
-                      newAnswers[index] = e.target.value;
-                      setUserAnswers(newAnswers);
-                    }}
-                    className={`min-w-[150px] w-full rounded-md border-0 py-1.5 pl-1.5 pr-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${colorInput(
-                      index,
-                      word
-                    )}`}
-                  ></textarea>
+                  <div className="col-start-2 col-span-2">
+                    <textarea
+                      value={userAnswers[index] || ""}
+                      rows={2}
+                      onChange={(e) => {
+                        const newAnswers = [...userAnswers];
+                        newAnswers[index] = e.target.value;
+                        setUserAnswers(newAnswers);
+                      }}
+                      className={`min-w-[150px] w-full rounded-md border-0 py-1.5 pl-1.5 pr-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${colorInput(
+                        index,
+                        word
+                      )}`}
+                    ></textarea>
+                  </div>
                 </div>
               </div>
             ))}
