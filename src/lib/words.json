@@ -54,5 +54,16 @@
     { "latin": "interdum", "dutch": ["soms"] },
     { "latin": "quoque", "dutch": ["ook"] },
     { "latin": "enim", "dutch": ["want"] }
+  ],
+  "serie5": [
+    { "latin": "curia", "dutch": ["de curia"] },
+    { "latin": "fabula", "dutch": ["het verhaal", "het toneelstuk"] },
+    { "latin": "luna", "dutch": ["de maan"] },
+    { "latin": "forum", "dutch": ["het forum"] },
+    { "latin": "iudex", "dutch": ["de rechter"] },
+    { "latin": "onus", "dutch": ["de last"] },
+    { "latin": "tempus", "dutch": ["de tijd", "het moment"] },
+    { "latin": "non", "dutch": ["niet"] },
+    { "latin": "semper", "dutch": ["altijd"] }
   ]
 }
