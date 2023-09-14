@@ -6,6 +6,8 @@ import { Word } from "@/src/lib/types";
 import { shuffleArray } from "@/src/lib/utils";
 import Image from "next/image";
 
+const allData = Object.values(data).flat();
+
 export default function Home() {
   const [words, setWords] = useState<Word[]>([]);
   const [userAnswers, setUserAnswers] = useState<string[]>([]);
@@ -17,7 +19,7 @@ export default function Home() {
    *  Fetch and shuffle the words when the component mounts
    */
   useEffect(() => {
-    const shuffledWords = shuffleArray(data);
+    const shuffledWords = shuffleArray(allData);
     setWords(shuffledWords.slice(0, 10)); // Select 10 random words
     setLoading(false);
   }, []);
@@ -46,7 +48,7 @@ export default function Home() {
     setGameOver(true);
   };
 
-  const isAllCorrect = (index: number, word: (typeof data)[number]) => {
+  const isAllCorrect = (index: number, word: (typeof allData)[number]) => {
     const userAnswerLines = userAnswers[index]
       ?.split("\n")
       .map((line) => line.trim().toLowerCase());
@@ -60,7 +62,7 @@ export default function Home() {
     );
   };
 
-  const colorInput = (index: number, word: (typeof data)[number]) => {
+  const colorInput = (index: number, word: (typeof allData)[number]) => {
     if (!gameOver) {
       return "";
     }
