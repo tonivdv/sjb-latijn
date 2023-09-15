@@ -1,26 +1,28 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import data from "../../lib/words.json";
-import { Word } from "@/src/lib/types";
+import data from "../../../lib/words.json";
+import { Word, Words } from "@/src/lib/types";
 import { shuffleArray } from "@/src/lib/utils";
 import Image from "next/image";
+import { getWords } from "@/src/lib/words";
 
-const allData = Object.values(data).flat();
-
-export default function Home() {
+export default function Home({ params }: { params: { series: string } }) {
   const [words, setWords] = useState<Word[]>([]);
   const [userAnswers, setUserAnswers] = useState<string[]>([]);
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
+  const [maxScore, setMaxScore] = useState(10);
   const [loading, setLoading] = useState(true);
 
   /**
    *  Fetch and shuffle the words when the component mounts
    */
   useEffect(() => {
-    const shuffledWords = shuffleArray(allData);
-    setWords(shuffledWords.slice(0, 10)); // Select 10 random words
+    const selectedWords = getWords(params.series);
+    setMaxScore(Math.min(10, selectedWords.length));
+    const shuffledWords = shuffleArray(selectedWords);
+    setWords(shuffledWords.slice(0, maxScore)); // Select max 10 random words
     setLoading(false);
   }, []);
 
@@ -48,7 +50,7 @@ export default function Home() {
     setGameOver(true);
   };
 
-  const isAllCorrect = (index: number, word: (typeof allData)[number]) => {
+  const isAllCorrect = (index: number, word: Words[number]) => {
     const userAnswerLines = userAnswers[index]
       ?.split("\n")
       .map((line) => line.trim().toLowerCase());
@@ -62,7 +64,7 @@ export default function Home() {
     );
   };
 
-  const colorInput = (index: number, word: (typeof allData)[number]) => {
+  const colorInput = (index: number, word: Words[number]) => {
     if (!gameOver) {
       return "";
     }
@@ -86,7 +88,7 @@ export default function Home() {
         <div>
           {gameOver && (
             <div className="grid grid-cols-1 gap-4 text-center mt-1 mb-2 text-xl italic underline">
-              <h1>Je score: {score} op 10</h1>
+              <h1>Je score: {score} op {maxScore}</h1>
             </div>
           )}
           <div className="grid grid-cols-1">
@@ -94,7 +96,7 @@ export default function Home() {
               <div key={index} className="">
                 <div className="grid grid-cols-1 gap-1 mb-4">
                   <label className="block text-sm font-medium leading-6 text-white-900 pr-1">
-                    {index+1}) {word.latin}
+                    {index + 1}) {word.latin}
                   </label>
 
                   {gameOver && !isAllCorrect(index, word) && (

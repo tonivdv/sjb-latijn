@@ -3,4 +3,6 @@ type Word = {
   dutch: string[];
 };
 
-export { type Word };
+type Words = Word[];
+
+export { type Word, type Words };
