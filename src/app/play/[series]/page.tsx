@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import data from "../../../lib/words.json";
 import { Word, Words } from "@/src/lib/types";
-import { shuffleArray } from "@/src/lib/utils";
+import { roundScore, shuffleArray } from "@/src/lib/utils";
 import Image from "next/image";
 import { getWords } from "@/src/lib/words";
 
 export default function Home({ params }: { params: { series: string } }) {
   const [words, setWords] = useState<Word[]>([]);
-  const [userAnswers, setUserAnswers] = useState<string[]>([]);
+  const [translationAnswers, setTranslationAnswers] = useState<string[]>([]);
+  const [pluralAnswers, setPluralAnswers] = useState<string[]>([]);
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
   const [maxScore, setMaxScore] = useState(10);
@@ -24,52 +24,71 @@ export default function Home({ params }: { params: { series: string } }) {
     const shuffledWords = shuffleArray(selectedWords);
     setWords(shuffledWords.slice(0, maxScore)); // Select max 10 random words
     setLoading(false);
-  }, []);
+  }, [maxScore, params]);
 
   /**  Function to check the user's answers and calculate the score */
   const checkAnswers = () => {
     const newScore = words.reduce((acc, word, index) => {
       // Split the user's answers by newline and trim any leading/trailing whitespace
-      const userAnswerLines =
-        userAnswers[index]
+      const translationAnswerLines =
+        translationAnswers[index]
           ?.split("\n")
           .map((line) => line.trim().toLowerCase()) ?? [];
 
+      const scorePerRightAnswer = 1 / (word.dutch.length + 1);
+
       // Calculate the score for the current word
-      const wordScore = word.dutch.reduce((score, dutchWord) => {
-        if (userAnswerLines.includes(dutchWord.toLowerCase())) {
+      let wordScore = word.dutch.reduce((score, dutchWord) => {
+        if (translationAnswerLines.includes(dutchWord.toLowerCase())) {
           // Increment the score by 1 divided by the number of Dutch words
-          return score + 1 / word.dutch.length;
+          return score + scorePerRightAnswer;
         }
         return score;
       }, 0);
 
+      // Check the plural answer
+      if (
+        pluralAnswers[index]?.toLowerCase().trim() ===
+        word.plural?.toLowerCase().trim()
+      ) {
+        wordScore += scorePerRightAnswer; // Add 1 point for correct plural answer
+      }
+
       return acc + wordScore;
     }, 0);
+
     setScore(newScore);
     setGameOver(true);
   };
 
-  const isAllCorrect = (index: number, word: Words[number]) => {
-    const userAnswerLines = userAnswers[index]
+  const allTranslationsCorrect = (index: number, word: Words[number]) => {
+    const userAnswerLines = translationAnswers[index]
       ?.split("\n")
       .map((line) => line.trim().toLowerCase());
 
-    if (userAnswerLines?.length != word.dutch.length) {
+    if (userAnswerLines?.length !== word.dutch.length) {
       return false;
     }
 
-    return userAnswerLines?.every((userAnswer) =>
+    return userAnswerLines.every((userAnswer) =>
       word.dutch.some((dutchWord) => dutchWord.toLowerCase() === userAnswer)
     );
   };
 
-  const colorInput = (index: number, word: Words[number]) => {
+  const colorTranslationInput = (index: number, word: Words[number]) => {
     if (!gameOver) {
       return "";
     }
 
-    return isAllCorrect(index, word) ? "bg-green-100" : "bg-red-100";
+    return allTranslationsCorrect(index, word) ? "bg-green-100" : "bg-red-100";
+  };
+
+  const colorPluralInput = (index: number, word: Words[number]) => {
+    if (!gameOver) {
+      return "";
+    }
+
+    return word.plural !== pluralAnswers[index] ? "bg-red-100" : "bg-green-100";
   };
 
   return (
@@ -88,23 +107,31 @@ export default function Home({ params }: { params: { series: string } }) {
         <div>
           {gameOver && (
             <div className="grid grid-cols-1 gap-4 text-center mt-1 mb-2 text-xl italic underline">
-              <h1>Je score: {score} op {maxScore}</h1>
+              <h1>
+                Je score: {roundScore(score)} op {maxScore}
+              </h1>
             </div>
           )}
           <div className="grid grid-cols-1">
             {words.map((word, index) => (
               <div key={index} className="">
                 <div className="grid grid-cols-1 gap-1 mb-4">
-                  <label className="block text-sm font-medium leading-6 text-white-900 pr-1">
-                    {index + 1}) {word.latin}
+                  <h1 className="text-sm underline underline-offset-4 font-bold">
+                    {index + 1}. {word.latin}
+                  </h1>
+                  <label className="block text-xs font-normal leading-6 text-white-900 pr-1">
+                    Vertaling:
                   </label>
 
-                  {gameOver && !isAllCorrect(index, word) && (
+                  {gameOver && !allTranslationsCorrect(index, word) && (
                     <div className="text-red-500 italic">
                       {word.dutch.map((dutchWord, dutchIndex) => (
                         <div
                           key={dutchIndex}
-                          className={`text-${colorInput(index, word)}`}
+                          className={`text-${colorTranslationInput(
+                            index,
+                            word
+                          )}`}
                         >
                           {dutchWord}
                         </div>
@@ -113,18 +140,47 @@ export default function Home({ params }: { params: { series: string } }) {
                   )}
 
                   <textarea
-                    value={userAnswers[index] || ""}
+                    value={translationAnswers[index] || ""}
                     rows={2}
                     onChange={(e) => {
-                      const newAnswers = [...userAnswers];
+                      const newAnswers = [...translationAnswers];
                       newAnswers[index] = e.target.value;
-                      setUserAnswers(newAnswers);
+                      setTranslationAnswers(newAnswers);
                     }}
-                    className={`min-w-[150px] w-full rounded-md border-0 py-1.5 pl-1.5 pr-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${colorInput(
+                    className={`min-w-[150px] w-full rounded-md border-0 py-1.5 pl-1.5 pr-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${colorTranslationInput(
                       index,
                       word
                     )}`}
                   ></textarea>
+
+                  <div className="mt-2">
+                    <label className="block text-xs font-medium leading-6 text-white-900">
+                      Meervoud:
+                    </label>
+                    {gameOver && word.plural !== pluralAnswers[index] && (
+                      <div className="text-red-500 italic">
+                        <div
+                          className={`text-${colorPluralInput(index, word)}`}
+                        >
+                          {word.plural ?? "Geen meervoud voor die woord"}
+                        </div>
+                      </div>
+                    )}
+                    <input
+                      type="text"
+                      className={`min-w-[150px] w-full rounded-md border-0 py-1.5 pl-1.5 pr-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${colorPluralInput(
+                        index,
+                        word
+                      )}`}
+                      value={pluralAnswers[index] || ""}
+                      onChange={(e) => {
+                        const newAnswers = [...pluralAnswers];
+                        newAnswers[index] = e.target.value;
+                        setPluralAnswers(newAnswers);
+                      }}
+                      readOnly={gameOver}
+                    />
+                  </div>
                 </div>
               </div>
             ))}

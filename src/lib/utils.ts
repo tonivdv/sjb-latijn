@@ -9,4 +9,12 @@ const shuffleArray = (array: Word[]) => {
   return shuffledArray;
 };
 
-export { shuffleArray };
+const roundScore = (rawScore: number): string => {
+  const roundScore = Math.round((rawScore + Number.EPSILON) * 10) / 10;
+
+  return roundScore === Math.floor(roundScore)
+    ? roundScore.toFixed()
+    : roundScore.toFixed(1);
+};
+
+export { shuffleArray, roundScore };
