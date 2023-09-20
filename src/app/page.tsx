@@ -1,53 +1,95 @@
-import Image from "next/image";
-import { getSeries } from "../lib/words";
+"use client";
+
+import { getSeries, getWords } from "../lib/words";
 import PlayIcon from "../components/shared/PlayIcon";
-import ListIcon from "../components/shared/ListIcon";
+import { ChangeEvent, useEffect, useState } from "react";
+import { Words } from "../lib/types";
 
 export default function Home() {
+  const [selectedOption, setSelectedOption] = useState<string>("all");
+  const [selectedGameSerie, setSelectedGameSerie] =
+    useState<string>("Alle reeksen");
+  const [words, setWords] = useState<Words>([]);
+
+  useEffect(() => {
+    setWords(getWords(selectedOption));
+  }, [selectedOption]);
+
+  const handleOptionClick = (event: ChangeEvent<HTMLSelectElement>) => {
+    const selectedIndex = event.target.selectedIndex;
+    const option = event.target.options[selectedIndex];
+    const displayText = option.text;
+    setSelectedOption(event.target.value);
+    setSelectedGameSerie(displayText);
+  };
+
   const series = getSeries();
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-1">
-      <div className="grid grid-cols-1 gap-4 w-2/4 items-center justify-between">
-        <div className="bg-gray-200 rounded-xl shadow-lg">
-          <h1 className="text-white text-sm font-bold text-center p-2 bg-black rounded-t-xl">
-            Alle Woorden
-          </h1>
-          <div className="grid grid-cols-2 text-center items-center p-2">
-            <a href={`play/all`} className="p-1">
+      <div className="block w-full">
+        <select
+          onChange={handleOptionClick}
+          className="block text-sm w-11/12 mx-auto max-w-[400px] mt-5 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black"
+        >
+          <option defaultValue="all" value="all">
+            Alle reeksen
+          </option>
+          {series.map((serie) => (
+            <option key={serie} value={serie}>
+              Reeks {serie.replace("serie", "")}
+            </option>
+          ))}
+        </select>
+
+        <div className="grid grid-cols-1 w-1/2 mx-auto max-w-[600px] bg-black rounded-lg shadow-lg mt-5 text-white items-center text-center">
+          <div className="pt-1">Test</div>
+          <div>
+            <a href={`play/${selectedOption}`} className="p-0">
               <PlayIcon />
             </a>
-
-            <a href={`list/all`} className="p-1">
-              <ListIcon />
-            </a>
-          </div>
-          <div className="grid grid-cols-2 text-center pb-2">
-            <span className="text-black text-xs italic">Speel</span>
-            <span className="text-black text-xs italic">Lijst</span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {series.map((serie) => (
-            <div key={serie} className="bg-gray-200 rounded-xl shadow-lg">
-              <h1 className="text-white text-sm font-bold text-center p-2 bg-black rounded-t-xl">
-                {serie}
-              </h1>
-              <div className="grid grid-cols-2 text-center items-center p-2">
-                <a href={`play/${serie}`} className="p-1">
-                  <PlayIcon />
-                </a>
-
-                <a href={`list/${serie}`} className="p-1">
-                  <ListIcon />
-                </a>
-              </div>
-              <div className="grid grid-cols-2 text-center pb-2">
-                <span className="text-black text-xs italic">Speel</span>
-                <span className="text-black text-xs italic">Lijst</span>
-              </div>
-            </div>
-          ))}
+        <div className="block w-11/12 mx-auto max-w-[600px] shadow-lg mt-5">
+          <table className="table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" className="px-6 py-3">
+                  Latijn
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Meervoud / Type
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Nederlands
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {words.map((word, index) => (
+                <tr
+                  key={index}
+                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                >
+                  <th
+                    scope="row"
+                    className="p-2 font-medium text-gray-900 dark:text-white"
+                  >
+                    {word.latin}
+                  </th>
+                  <td className="p-2">{word.plural}</td>
+                  <td className="p-2">
+                    {word.dutch.map((dutch) => (
+                      <span key={dutch} className="block">
+                        {dutch}
+                      </span>
+                    ))}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </main>
