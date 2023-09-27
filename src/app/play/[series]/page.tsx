@@ -14,6 +14,7 @@ export default function Home({ params }: { params: { series: string } }) {
   const [score, setScore] = useState(0);
   const [maxScore, setMaxScore] = useState(10);
   const [loading, setLoading] = useState(true);
+  const [currentQuestion, setCurrentQuestion] = useState(1);
 
   /**
    *  Fetch and shuffle the words when the component mounts
@@ -49,7 +50,7 @@ export default function Home({ params }: { params: { series: string } }) {
       // Check the plural answer
       if (
         pluralAnswers[index]?.toLowerCase().trim() ===
-        word.plural?.toLowerCase().trim()
+        word.middle?.toLowerCase().trim()
       ) {
         wordScore += scorePerRightAnswer; // Add 1 point for correct plural answer
       }
@@ -88,11 +89,11 @@ export default function Home({ params }: { params: { series: string } }) {
       return "";
     }
 
-    return word.plural !== pluralAnswers[index] ? "bg-red-100" : "bg-green-100";
+    return word.middle !== pluralAnswers[index] ? "bg-red-100" : "bg-green-100";
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-3 text-xs">
+    <main className="flex min-h-screen flex-col w-screen items-center justify-between p-3 text-xs">
       {loading ? (
         <div className="text-center">
           <Image
@@ -104,7 +105,29 @@ export default function Home({ params }: { params: { series: string } }) {
           />
         </div>
       ) : (
-        <div>
+        <div className="w-11/12 mx-auto max-w-[800px]">
+          {/* {words.map((word, index) => (
+            <div
+              key={index}
+              className={`${index + 1 === currentQuestion ? "" : "hidden"}`}
+            >
+              <div className="flex flex-col items-start w-full">
+                <h4 className="mt-10 text-lg text-white/60">
+                  Woord 1 op {maxScore}
+                </h4>
+                <div className="mt-1 text-xl text-white">
+                  {word.latin}
+                </div>
+              </div>
+              <button className="w-[49%] py-3 bg-indigo-600 rounded-lg">
+                Vorige
+              </button>
+              <button className="w-[49%] py-3 bg-indigo-600 rounded-lg">
+                Volgende
+              </button>
+            </div>
+          ))} */}
+
           {gameOver && (
             <div className="grid grid-cols-1 gap-4 text-center mt-1 mb-2 text-xl italic underline">
               <h1>
@@ -120,7 +143,7 @@ export default function Home({ params }: { params: { series: string } }) {
                     {index + 1}. {word.latin}
                   </h1>
                   <label className="block text-xs font-normal leading-6 text-white-900 pr-1">
-                    Vertaling:
+                    Nederlands?
                   </label>
 
                   {gameOver && !allTranslationsCorrect(index, word) && (
@@ -155,14 +178,14 @@ export default function Home({ params }: { params: { series: string } }) {
 
                   <div className="mt-2">
                     <label className="block text-xs font-medium leading-6 text-white-900">
-                      Meervoud:
+                      Middelste kolom?
                     </label>
-                    {gameOver && word.plural !== pluralAnswers[index] && (
+                    {gameOver && word.middle !== pluralAnswers[index] && (
                       <div className="text-red-500 italic">
                         <div
                           className={`text-${colorPluralInput(index, word)}`}
                         >
-                          {word.plural ?? "Geen meervoud voor die woord"}
+                          {word.middle ?? "Geen meervoud voor die woord"}
                         </div>
                       </div>
                     )}

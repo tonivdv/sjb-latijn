@@ -1,7 +1,7 @@
 type Word = {
   latin: string;
   dutch: string[];
-  plural?: string;
+  middle?: string;
 };
 
 type Words = Word[];

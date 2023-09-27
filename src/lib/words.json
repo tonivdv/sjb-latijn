@@ -1,38 +1,38 @@
 {
   "serie1": [
-    { "latin": "amicus", "dutch": ["de vriend"], "plural": "amici" },
-    { "latin": "deus", "dutch": ["de god"], "plural": "dei" },
-    { "latin": "dominus", "dutch": ["de meester"], "plural": "domini" },
-    { "latin": "equus", "dutch": ["het paard"], "plural": "equi" },
-    { "latin": "filius", "dutch": ["de zoon"], "plural": "filii" },
-    { "latin": "servus", "dutch": ["de slaaf"], "plural": "servi" },
-    { "latin": "aqua", "dutch": ["het water"], "plural": "aquae" },
+    { "latin": "amicus", "dutch": ["de vriend"], "middle": "amici" },
+    { "latin": "deus", "dutch": ["de god"], "middle": "dei" },
+    { "latin": "dominus", "dutch": ["de meester"], "middle": "domini" },
+    { "latin": "equus", "dutch": ["het paard"], "middle": "equi" },
+    { "latin": "filius", "dutch": ["de zoon"], "middle": "filii" },
+    { "latin": "servus", "dutch": ["de slaaf"], "middle": "servi" },
+    { "latin": "aqua", "dutch": ["het water"], "middle": "aquae" },
     {
       "latin": "familia",
       "dutch": ["het gezin", "het personeel"],
-      "plural": "familiae"
+      "middle": "familiae"
     },
-    { "latin": "via", "dutch": ["de weg"], "plural": "viae" },
+    { "latin": "via", "dutch": ["de weg"], "middle": "viae" },
     {
       "latin": "monumentum",
       "dutch": ["het monument", "het aandenken"],
-      "plural": "monumenti"
+      "middle": "monumenti"
     },
-    { "latin": "templum", "dutch": ["de tempel"], "plural": "templi" },
-    { "latin": "vinum", "dutch": ["de wijn"], "plural": "vini" },
-    { "latin": "pater", "dutch": ["de vader"], "plural": "patris" },
-    { "latin": "senex", "dutch": ["de oude man"], "plural": "senis" },
+    { "latin": "templum", "dutch": ["de tempel"], "middle": "templi" },
+    { "latin": "vinum", "dutch": ["de wijn"], "middle": "vini" },
+    { "latin": "pater", "dutch": ["de vader"], "middle": "patris" },
+    { "latin": "senex", "dutch": ["de oude man"], "middle": "senis" },
     {
       "latin": "virgo",
       "dutch": ["de maagd", "het meisje"],
-      "plural": "virginis"
+      "middle": "virginis"
     },
-    { "latin": "vox", "dutch": ["de stem", "het woord"], "plural": "vocis" },
-    { "latin": "flumen", "dutch": ["de rivier"], "plural": "fluminis" },
+    { "latin": "vox", "dutch": ["de stem", "het woord"], "middle": "vocis" },
+    { "latin": "flumen", "dutch": ["de rivier"], "middle": "fluminis" },
     {
       "latin": "sidus",
       "dutch": ["de ster", "het sterrenbeeld"],
-      "plural": "sideris"
+      "middle": "sideris"
     },
     { "latin": "dea", "dutch": ["de godin"] },
     { "latin": "domina", "dutch": ["de meesteres"] },
@@ -40,62 +40,122 @@
     { "latin": "serva", "dutch": ["de slavin"] }
   ],
   "serie2": [
-    { "latin": "femina", "dutch": ["de vrouw"], "plural": "feminae" },
-    { "latin": "canis", "dutch": ["de hond"], "plural": "canis" },
-    { "latin": "iuvenis", "dutch": ["de jonge man"], "plural": "iuvenis" },
+    { "latin": "femina", "dutch": ["de vrouw"], "middle": "feminae" },
+    { "latin": "canis", "dutch": ["de hond"], "middle": "canis" },
+    { "latin": "iuvenis", "dutch": ["de jonge man"], "middle": "iuvenis" },
     {
       "latin": "mercator",
       "dutch": ["de handelaar"],
-      "plural": "mercatoris"
+      "middle": "mercatoris"
     },
-    { "latin": "miles", "dutch": ["de soldaat"], "plural": "militis" },
-    { "latin": "senator", "dutch": ["de senator"], "plural": "senatoris" },
-    { "latin": "nox", "dutch": ["de nacht"], "plural": "noctis" },
+    { "latin": "miles", "dutch": ["de soldaat"], "middle": "militis" },
+    { "latin": "senator", "dutch": ["de senator"], "middle": "senatoris" },
+    { "latin": "nox", "dutch": ["de nacht"], "middle": "noctis" },
     {
       "latin": "caput",
       "dutch": ["het hoofd", "het hoofdstuk"],
-      "plural": "capitis"
+      "middle": "capitis"
     }
   ],
   "serie3": [
     { "latin": "est", "dutch": ["is"] },
     { "latin": "sunt", "dutch": ["zijn"] },
-    { "latin": "ibi", "dutch": ["daar"] },
-    { "latin": "saepe", "dutch": ["dikwijls"] },
-    { "latin": "aut", "dutch": ["of"] },
-    { "latin": "et", "dutch": ["en", "ook"] },
-    { "latin": "-que", "dutch": ["en"] },
-    { "latin": "sed", "dutch": ["maar"] }
+    { "latin": "ibi", "dutch": ["daar"], "middle": "bijwoord" },
+    { "latin": "saepe", "dutch": ["dikwijls"], "middle": "bijwoord" },
+    { "latin": "aut", "dutch": ["of"], "middle": "voegwoord" },
+    { "latin": "et", "dutch": ["en", "ook"], "middle": "voegwoord" },
+    { "latin": "-que", "dutch": ["en"], "middle": "voegwoord" },
+    { "latin": "sed", "dutch": ["maar"], "middle": "voegwoord" }
   ],
   "serie4": [
-    { "latin": "avus", "dutch": ["de grootvader"], "plural": "avi" },
-    { "latin": "rosa", "dutch": ["de roos"], "plural": "rosae" },
-    { "latin": "donum", "dutch": ["het geschenk"], "plural": "doni" },
-    { "latin": "dux", "dutch": ["de leider"], "plural": "ducis" },
-    { "latin": "mater", "dutch": ["de moeder"], "plural": "matris" },
-    { "latin": "corpus", "dutch": ["het lichaam"], "plural": "corporis" },
-    { "latin": "iam", "dutch": ["al", "dadelijk"] },
-    { "latin": "interdum", "dutch": ["soms"] },
-    { "latin": "quoque", "dutch": ["ook"] },
-    { "latin": "enim", "dutch": ["want"] }
+    { "latin": "avus", "dutch": ["de grootvader"], "middle": "avi" },
+    { "latin": "rosa", "dutch": ["de roos"], "middle": "rosae" },
+    { "latin": "donum", "dutch": ["het geschenk"], "middle": "doni" },
+    { "latin": "dux", "dutch": ["de leider"], "middle": "ducis" },
+    { "latin": "mater", "dutch": ["de moeder"], "middle": "matris" },
+    { "latin": "corpus", "dutch": ["het lichaam"], "middle": "corporis" },
+    { "latin": "iam", "dutch": ["al", "dadelijk"], "middle": "bijwoord" },
+    { "latin": "interdum", "dutch": ["soms"], "middle": "bijwoord" },
+    { "latin": "quoque", "dutch": ["ook"], "middle": "bijwoord" },
+    { "latin": "enim", "dutch": ["want"], "middle": "voegwoord" }
   ],
   "serie5": [
-    { "latin": "curia", "dutch": ["de curia"], "plural": "curiae" },
+    { "latin": "curia", "dutch": ["de curia"], "middle": "curiae" },
     {
       "latin": "fabula",
       "dutch": ["het verhaal", "het toneelstuk"],
-      "plural": "fabulae"
+      "middle": "fabulae"
     },
-    { "latin": "luna", "dutch": ["de maan"], "plural": "lunae" },
-    { "latin": "forum", "dutch": ["het forum"], "plural": "fori" },
-    { "latin": "iudex", "dutch": ["de rechter"], "plural": "iudicis" },
-    { "latin": "onus", "dutch": ["de last"], "plural": "oneris" },
+    { "latin": "luna", "dutch": ["de maan"], "middle": "lunae" },
+    { "latin": "forum", "dutch": ["het forum"], "middle": "fori" },
+    { "latin": "iudex", "dutch": ["de rechter"], "middle": "iudicis" },
+    { "latin": "onus", "dutch": ["de last"], "middle": "oneris" },
     {
       "latin": "tempus",
       "dutch": ["de tijd", "het moment"],
-      "plural": "temporis"
+      "middle": "temporis"
     },
-    { "latin": "non", "dutch": ["niet"] },
-    { "latin": "semper", "dutch": ["altijd"] }
+    { "latin": "non", "dutch": ["niet"], "middle": "ontkenning" },
+    { "latin": "semper", "dutch": ["altijd"], "middle": "bijwoord" }
+  ],
+  "serie6": [
+    { "latin": "statua", "dutch": ["het standbeeld"], "middle": "statuae" },
+    {
+      "latin": "eques",
+      "dutch": ["de ruiter", "de ridder"],
+      "middle": "equitis"
+    },
+    {
+      "latin": "laborare",
+      "dutch": ["werken", "lijden"],
+      "middle": "laboraro"
+    },
+    {
+      "latin": "apparere",
+      "dutch": ["verschijnen", "blijken"],
+      "middle": "appareo"
+    },
+    { "latin": "dormire", "dutch": ["slapen"], "middle": "dormio" },
+    { "latin": "domi", "dutch": ["thuis"], "middle": "bijwoord" },
+    { "latin": "etiam", "dutch": ["ook", "zelfs"], "middle": "bijwoord" },
+    { "latin": "nondum", "dutch": ["nog niet"], "middle": "bijwoord" },
+    { "latin": "non iam", "dutch": ["niet meer"], "middle": "bijwoord" },
+    { "latin": "nunc", "dutch": ["nu"], "middle": "bijwoord" }
+  ],
+  "serie7": [
+    { "latin": "theatrum", "middle": "theatri", "dutch": ["het theater"] },
+    { "latin": "mulier", "middle": "mulieris", "dutch": ["de vrouw"] },
+    { "latin": "uxor", "middle": "uxoris", "dutch": ["de echtgenote"] },
+    { "latin": "cogitare", "middle": "cogito", "dutch": ["(na)denken"] },
+    { "latin": "dare", "middle": "do", "dutch": ["geven"] },
+    { "latin": "narrare", "middle": "narro", "dutch": ["vertellen"] },
+    { "latin": "properare", "middle": "propero", "dutch": ["zich haasten"] },
+    { "latin": "rogare", "middle": "rogo", "dutch": ["vragen"] },
+    {
+      "latin": "spectare",
+      "middle": "specto",
+      "dutch": ["(be)kijken", "op het oog hebben"]
+    },
+    { "latin": "stare", "middle": "sto", "dutch": ["staan", "blijven staan"] },
+    { "latin": "gaudere", "middle": "gaudeo", "dutch": ["blij zijn"] },
+    {
+      "latin": "habere",
+      "middle": "habeo",
+      "dutch": ["hebben", "beschouwen als"]
+    },
+    { "latin": "respondere", "middle": "respondeo", "dutch": ["antwoorden"] },
+    { "latin": "sedere", "middle": "sedeo", "dutch": ["zitten"] },
+    { "latin": "videre", "middle": "video", "dutch": ["zien"] },
+    {
+      "latin": "aperire",
+      "middle": "aperio",
+      "dutch": ["openen", "onthullen"]
+    },
+    { "latin": "venire", "middle": "venio", "dutch": ["komen"] },
+    { "latin": "esse", "middle": "sum", "dutch": ["zijn", "bestaan"] },
+    { "latin": "cur?", "middle": "bijwoord", "dutch": ["waarom?"] },
+    { "latin": "domum", "middle": "bijwoord", "dutch": ["naar huis"] },
+    { "latin": "ideo", "middle": "bijwoord", "dutch": ["daarom"] },
+    { "latin": "interea", "middle": "bijwoord", "dutch": ["intussen"] }
   ]
 }

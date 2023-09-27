@@ -42,7 +42,7 @@ export default function Home() {
           ))}
         </select>
 
-        <div className="grid grid-cols-1 w-1/2 mx-auto max-w-[600px] bg-black rounded-lg shadow-lg mt-5 text-white items-center text-center">
+        <div className="grid grid-cols-1 w-1/2 mx-auto max-w-[250px] bg-black rounded-lg shadow-lg mt-5 text-white items-center text-center">
           <div className="pt-1">Test</div>
           <div>
             <a href={`play/${selectedOption}`} className="p-0">
@@ -59,7 +59,7 @@ export default function Home() {
                   Latijn
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Meervoud / Type
+                  Middelste kolom
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Nederlands
@@ -78,7 +78,7 @@ export default function Home() {
                   >
                     {word.latin}
                   </th>
-                  <td className="p-2">{word.plural}</td>
+                  <td className="p-2">{word.middle}</td>
                   <td className="p-2">
                     {word.dutch.map((dutch) => (
                       <span key={dutch} className="block">
