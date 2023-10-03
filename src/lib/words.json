@@ -157,5 +157,93 @@
     { "latin": "domum", "middle": "bijwoord", "dutch": ["naar huis"] },
     { "latin": "ideo", "middle": "bijwoord", "dutch": ["daarom"] },
     { "latin": "interea", "middle": "bijwoord", "dutch": ["intussen"] }
+  ],
+  "serie8": [
+    { "latin": "pecunia", "middle": "pecuniae", "dutch": ["het geld"] },
+    { "latin": "aedificium", "middle": "aedificii", "dutch": ["het gebouw"] },
+    {
+      "latin": "spectaculum",
+      "middle": "spectaculi",
+      "dutch": ["het schouwspel"]
+    },
+    {
+      "latin": "finis",
+      "middle": "finis",
+      "dutch": ["de grens", "het einde", "het doel"]
+    },
+    { "latin": "iter", "middle": "itineris", "dutch": ["de reis", "de weg"] },
+    { "latin": "laetus", "middle": "-a, -um", "dutch": ["vrolijk"] },
+    {
+      "latin": "latus",
+      "middle": "-a, -um",
+      "dutch": ["breed", "uitgestrekt"]
+    },
+    { "latin": "longus", "middle": "-a, -um", "dutch": ["lang"] },
+    {
+      "latin": "magnus",
+      "middle": "-a, -um",
+      "dutch": ["groot", "belangrijk"]
+    },
+    {
+      "latin": "optimus",
+      "middle": "-a, -um",
+      "dutch": ["beste", "zeer goed"]
+    },
+    { "latin": "timidus", "middle": "-a, -um", "dutch": ["bang"] },
+    { "latin": "clamare", "middle": "clamo", "dutch": ["roepen"] },
+    {
+      "latin": "invenire",
+      "middle": "invenio",
+      "dutch": ["vinden", "ontdekken"]
+    },
+    {
+      "latin": "tum of tunc",
+      "middle": "bijwoord",
+      "dutch": ["op dat moment"]
+    },
+    { "latin": "dum", "middle": "voegwoord", "dutch": ["terwijl"] }
+  ],
+  "serie9": [
+    { "latin": "amare", "middle": "amo", "dutch": ["beminnen", "houden van"] },
+    { "latin": "monere", "middle": "moneo", "dutch": ["waarschuwen"] },
+    {
+      "latin": "audire",
+      "middle": "audio",
+      "dutch": ["horen", "luisteren naar"]
+    },
+    { "latin": "altus", "middle": "-a, -um", "dutch": ["hoog", "diep"] },
+    { "latin": "magnificus", "middle": "-a, -um", "dutch": ["prachtig"] },
+    { "latin": "multi", "middle": "-ae, -a", "dutch": ["veel"] },
+    { "latin": "novus", "middle": "-a, -um", "dutch": ["nieuw"] },
+    { "latin": "Romanus", "middle": "-a, -um", "dutch": ["Romeins"] },
+    { "latin": "subito", "middle": "bijwoord", "dutch": ["plotseling"] }
+  ],
+  "serie10": [
+    { "latin": "antiquus", "middle": "-a, -um", "dutch": ["oud"] },
+    { "latin": "malus", "middle": "-a, -um", "dutch": ["slecht"] },
+    { "latin": "totus", "middle": "-a, -um", "dutch": ["geheel"] },
+    { "latin": "nam", "middle": "voegwoord", "dutch": ["want"] },
+    { "latin": "quod", "middle": "voegwoord", "dutch": ["omdat"] }
+  ],
+  "serie11": [
+    { "latin": "bonus", "middle": "-a, -um", "dutch": ["goed"] },
+    { "latin": "iratus", "middle": "-a, -um", "dutch": ["woedend"] },
+    { "latin": "stultus", "middle": "-a, -um", "dutch": ["dwaas"] },
+    { "latin": "bene", "middle": "bijwoord", "dutch": ["goed"] }
+  ],
+  "serie12": [
+    { "latin": "unus", "middle": "-a, -um", "dutch": ["één", "enig"] },
+    { "latin": "duo", "middle": "-ae, -o", "dutch": ["twee"] },
+    { "latin": "tres", "middle": "tria, trium", "dutch": ["drie"] },
+    { "latin": "quattuor", "middle": "-", "dutch": ["vier"] },
+    { "latin": "quinque", "middle": "-", "dutch": ["vijf"] },
+    { "latin": "sex", "middle": "-", "dutch": ["zes"] },
+    { "latin": "septem", "middle": "-", "dutch": ["zeven"] },
+    { "latin": "octo", "middle": "-", "dutch": ["acht"] },
+    { "latin": "novem", "middle": "-", "dutch": ["negen"] },
+    { "latin": "decem", "middle": "-", "dutch": ["tien"] },
+    { "latin": "centum", "middle": "-", "dutch": ["honderd"] },
+    { "latin": "mille", "middle": "-", "dutch": ["duizend"] },
+    { "latin": "...milia", "middle": "milium", "dutch": ["...duizend"] }
   ]
 }
